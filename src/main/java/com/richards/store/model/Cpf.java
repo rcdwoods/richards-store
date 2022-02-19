@@ -7,13 +7,9 @@ public class Cpf {
     private final Integer CPF_LENGTH = 11;
     private String cpf;
 
-    public Cpf(String cpf) throws InvalidCpfException {
-        this.cpf = getValidatedCpf(cpf);
-    }
+    public Cpf(String cpf) throws InvalidCpfException { this.cpf = getValidatedCpf(cpf); }
 
-    public String getCpf() {
-        return this.cpf;
-    }
+    public String getCpf() { return this.cpf; }
 
     private String getValidatedCpf(String cpf) throws InvalidCpfException {
         if (!hasValidFormat(cpf)) throw new InvalidCpfException("Invalid CPF.");
@@ -50,11 +46,7 @@ public class Cpf {
         return true;
     }
 
-    private String getFormattedCpf(String cpf) {
-        return cpf.replaceAll("[.# -]", "");
-    }
+    private String getFormattedCpf(String cpf) { return cpf.replaceAll("[.# -]", ""); }
 
-    private Boolean isAllDigitsTheSame(String cpf) {
-        return getFormattedCpf(cpf).chars().allMatch(c -> c == cpf.charAt(0));
-    }
+    private Boolean isAllDigitsTheSame(String cpf) { return getFormattedCpf(cpf).chars().allMatch(c -> c == cpf.charAt(0)); }
 }
