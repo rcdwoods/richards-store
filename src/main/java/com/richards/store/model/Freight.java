@@ -12,4 +12,14 @@ public class Freight {
 		this.item = item;
 		this.distanceInKilometers = distanceInKilometers;
 	}
+
+	public BigDecimal getPrice() {
+		BigDecimal minimumPrice = new BigDecimal("10.0");
+		BigDecimal price = distanceInKilometers
+			.multiply(item.getVolume())
+			.multiply(item.getDensity())
+			.divide(BigDecimal.valueOf(100))
+			.setScale(1, RoundingMode.HALF_UP);
+		return price.compareTo(minimumPrice) < 0  ? minimumPrice : price;
+	}
 }
