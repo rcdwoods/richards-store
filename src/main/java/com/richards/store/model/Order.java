@@ -26,4 +26,8 @@ public class Order {
     public void addItem(Item item, Integer amount) {
         orderItems.add(new OrderItem(item.getId(), item.getPrice(), amount));
     }
-}
+
+    public void addDiscountCoupon(Coupon coupon) throws ExpiredCouponException {
+        if (coupon.isExpired()) throw new ExpiredCouponException("Expired coupon.");
+        this.discountCoupon = coupon;
+    }
