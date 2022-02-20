@@ -31,3 +31,16 @@ public class Order {
         if (coupon.isExpired()) throw new ExpiredCouponException("Expired coupon.");
         this.discountCoupon = coupon;
     }
+
+    public BigDecimal getFinalPrice() {
+        BigDecimal totalPrice = orderItems
+            .stream()
+            .map(OrderItem::getFinalPrice)
+            .reduce(new BigDecimal("0"), BigDecimal::add);
+        return applyCoupon(totalPrice);
+    }
+
+    private BigDecimal applyCoupon(BigDecimal value) {
+        return this.discountCoupon != null ? this.discountCoupon.applyDiscountOnValue(value) : value;
+    }
+}
