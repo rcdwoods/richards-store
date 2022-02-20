@@ -27,4 +27,12 @@ public class Item {
     public BigDecimal getPrice() {
         return this.price;
     }
+
+    public BigDecimal getVolume() {
+        return this.dimension.getVolumeInMeters();
+    }
+
+    public BigDecimal getDensity() {
+        return this.weight.divide(this.dimension.getVolumeInMeters(), 1 , RoundingMode.HALF_UP);
+    }
 }
