@@ -7,9 +7,7 @@ public class Cpf {
     private final Integer CPF_LENGTH = 11;
     private String cpf;
 
-    public Cpf(String cpf) throws InvalidCpfException {
-        this.cpf = getValidatedCpf(cpf);
-    }
+    public Cpf(String cpf) throws InvalidCpfException { this.cpf = getValidatedCpf(cpf); }
 
     public String getCpf() { return this.cpf; }
 
