@@ -14,6 +14,7 @@ public class Order {
     private Cpf cpf;
     private List<OrderItem> orderItems = new ArrayList<>();
     private Coupon discountCoupon;
+    private Freight freight;
 
     public Order(String cpf) throws InvalidCpfException {
         this.cpf = new Cpf(cpf);
@@ -32,12 +33,17 @@ public class Order {
         this.discountCoupon = coupon;
     }
 
+    public void setFreight(Freight freight) {
+        this.freight = freight;
+    }
+
     public BigDecimal getFinalPrice() {
+        BigDecimal freightPrice = this.freight != null ? this.freight.getPrice() : new BigDecimal("0");
         BigDecimal totalPrice = orderItems
             .stream()
             .map(OrderItem::getFinalPrice)
             .reduce(new BigDecimal("0"), BigDecimal::add);
-        return applyCoupon(totalPrice);
+        return applyCoupon(totalPrice).subtract(freightPrice);
     }
 
     private BigDecimal applyCoupon(BigDecimal value) {
