@@ -70,4 +70,28 @@ class OrderTest {
         });
         Assertions.assertThat(exception.getMessage()).isEqualTo("Expired coupon.");
     }
+
+    @Test
+    void mustCalculateFinalPriceConsideringFreight() throws InvalidCpfException {
+        Order order = new Order("123.456.789-09");
+        Item item = new Item(1L, "Música", "CD", new BigDecimal("30"), new BigDecimal("1"), defaultDimension);
+        Freight freight = new Freight(item, new BigDecimal("1000"));
+        order.addItem(item, 3);
+        order.setFreight(freight);
+        Assertions.assertThat(freight.getPrice()).isEqualTo(new BigDecimal("10.0"));
+        Assertions.assertThat(order.getFinalPrice()).isEqualTo(new BigDecimal("80.0"));
+    }
+
+    @Test
+    void mustCalculateFinalPriceConsideringFreightAndCoupon() throws InvalidCpfException, ExpiredCouponException {
+        Order order = new Order("123.456.789-09");
+        Coupon coupon = new Coupon("TEST_COUPON", 20, LocalDate.now());
+        Item item = new Item(1L, "Música", "CD", new BigDecimal("30"), new BigDecimal("1"), defaultDimension);
+        Freight freight = new Freight(item, new BigDecimal("1000"));
+        order.addItem(item, 3);
+        order.setFreight(freight);
+        order.addDiscountCoupon(coupon);
+        Assertions.assertThat(freight.getPrice()).isEqualTo(new BigDecimal("10.0"));
+        Assertions.assertThat(order.getFinalPrice()).isEqualTo(new BigDecimal("62.0"));
+    }
 }
