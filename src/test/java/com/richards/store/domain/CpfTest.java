@@ -1,10 +1,9 @@
-package com.richards.store.model;
+package com.richards.store.domain;
 
+import com.richards.store.domain.entity.Cpf;
 import com.richards.store.excepion.InvalidCpfException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 

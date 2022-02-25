@@ -1,5 +1,10 @@
-package com.richards.store.model;
+package com.richards.store.domain;
 
+import com.richards.store.domain.entity.Coupon;
+import com.richards.store.domain.entity.Dimension;
+import com.richards.store.domain.entity.Freight;
+import com.richards.store.domain.entity.Item;
+import com.richards.store.domain.entity.Order;
 import com.richards.store.excepion.ExpiredCouponException;
 import com.richards.store.excepion.InvalidCpfException;
 import org.assertj.core.api.Assertions;

@@ -1,10 +1,9 @@
-package com.richards.store.model;
+package com.richards.store.domain.entity;
 
 import com.richards.store.excepion.ExpiredCouponException;
 import com.richards.store.excepion.InvalidCpfException;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 

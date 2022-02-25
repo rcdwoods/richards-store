@@ -1,5 +1,6 @@
-package com.richards.store.model;
+package com.richards.store.domain;
 
+import com.richards.store.domain.entity.OrderItem;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

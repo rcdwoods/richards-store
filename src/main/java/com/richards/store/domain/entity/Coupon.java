@@ -1,4 +1,4 @@
-package com.richards.store.model;
+package com.richards.store.domain.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

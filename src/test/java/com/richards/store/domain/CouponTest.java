@@ -1,15 +1,11 @@
-package com.richards.store.model;
+package com.richards.store.domain;
 
-import com.richards.store.excepion.ExpiredCouponException;
+import com.richards.store.domain.entity.Coupon;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.math.BigDecimal;
-import java.time.Clock;
 import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CouponTest {
 
